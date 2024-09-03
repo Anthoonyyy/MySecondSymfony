@@ -32,4 +32,8 @@ ou
 
 Le nom doit être en Pascal case terminé par controller, mais symfony se charge de 
 le corriger en cas d'oubli
-                                                                                                                                                                                                                                                  
+                                             
+ 
+On va vérifier la route par défaut
+
+``php bin/console debug:route``
