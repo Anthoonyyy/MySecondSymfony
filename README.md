@@ -177,5 +177,7 @@ Une entité est la représentation objet d'un élément de sauvegarde de donnée
 
 `php bin/console make:entity`
 
+## Première migration
 
+`` php bin/console make:migration``
 
