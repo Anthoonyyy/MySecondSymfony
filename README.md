@@ -126,3 +126,56 @@ un seul endroit : 'src/controller'
 ```
 
 
+Le fichier '.env' est le fichier de configuration qui est mis sur 'git' donc 'github'
+
+```'.env.local'```
+```cp .env .env.local```
+
+Ouvrir ``.env.local``
+
+Changez cette ligne 
+
+``App_ENV=dev`` en `App_ENV=prod`
+``APP_SECRET=une_autre_clef_securise``
+
+Si on retape `php bin/console debug:route`
+
+On ne retrouve plus que les routes de production
+
+Dans le fichier `.env.local`
+
+trouvez la ligne de base de donnée : 
+
+```bash
+# ne pas oublier de remettre ``App_ENV=prod`` en `App_ENV=dev`
+# DATABASE_URL="mysql://app:!ChangeMe!@127.0.0.1:3306/app?serverVersion=8.0.32&charset=utf8mb4"
+# DATABASE_URL="mysql://app:!ChangeMe!@127.0.0.1:3306/app?serverVersion=10.11.2-MariaDB&charset=utf8mb4"
+DATABASE_URL="postgresql://app:!ChangeMe!@127.0.0.1:5432/app?serverVersion=16&charset=utf8"
+```
+
+Commentez la ligne postgresql et décommenter la ligne mySQL
+
+Ensuite, passer les paramètres de connexion dans l'ordre :
+
+utilisateur:mot_de_passe@ip_serveur:port/nomdeladb?options
+
+```bash
+ DATABASE_URL="mysql://root:@127.0.0.1:3306/mysecondsymfony?serverVersion=8.0.31&charset=utf8mb4"
+# DATABASE_URL="mysql://app:!ChangeMe!@127.0.0.1:3306/app?serverVersion=10.11.2-MariaDB&charset=utf8mb4"
+# DATABASE_URL="postgresql://app:!ChangeMe!@127.0.0.1:5432/app?serverVersion=16&charset=utf8"
+```
+
+## Création de la DB
+
+`php bin/console doctrine:database:create`
+
+La base de donnée devrait être créé si mysql.exe est activé ou wamp démarré
+
+## Création d'une entité
+
+Une entité est la représentation objet d'un élément de sauvegarde de données, dans notre cas, en choisissant mysql, il s'agira d'une table
+
+`php bin/console make:entity`
+
+
+
