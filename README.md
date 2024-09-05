@@ -181,3 +181,85 @@ Une entité est la représentation objet d'un élément de sauvegarde de donnée
 
 `` php bin/console make:migration``
 
+puis ``php bin/console doctrine:migrations:migrate``
+
+## Ajout de champs à l'entité Article
+
+On utilise maker pour ça
+
+``php bin/console make:entity Article``
+
+
+```php
+class Article
+{
+    
+    # Getters et setters sauf pour les booleans
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): static
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getText(): ?string
+    {
+        return $this->text;
+    }
+
+    public function setText(string $text): static
+    {
+        $this->text = $text;
+
+        return $this;
+    }
+
+    public function getDateCreated(): ?\DateTimeInterface
+    {
+        return $this->date_created;
+    }
+
+    public function setDateCreated(?\DateTimeInterface $date_created): static
+    {
+        $this->date_created = $date_created;
+
+        return $this;
+    }
+
+    public function getDatePublished(): ?\DateTimeInterface
+    {
+        return $this->date_published;
+    }
+
+    public function setDatePublished(?\DateTimeInterface $date_published): static
+    {
+        $this->date_published = $date_published;
+
+        return $this;
+    }
+ // ! pour boolean, is est rajouté pour le getter
+ // bug si on avait choisi isPublished -> isPublished
+    public function isPublished(): ?bool
+    {
+        return $this->published;
+    }
+ // le setter peut bug si on avait choisi comme nom isPublished
+    public function setPublished(?bool $published): static
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+}
+```
