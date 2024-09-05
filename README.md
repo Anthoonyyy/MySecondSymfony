@@ -286,3 +286,46 @@ created: templates/admin_article/new.html.twig
 created: templates/admin_article/show.html.twig
 created: tests/Controller/ArticleControllerTest.php
 ``
+On a rajouté le chemin dans le `menu.html.twig`
+
+```
+<nav>
+    {# On utilise path('nom du chemin') lorsqu'on veut un lien vers une autre page #}
+    <a href="{{ path('homepage') }}">Homepage</a>
+    <a href="{{ path('about_me') }}">About me </a>
+    <a href="{{ path('app_admin_article_index') }}">CRUD Article</a>
+</nav>
+```
+
+On peut mettre l'include dans `templates/base.html.twig` pour éviter de devoir le faire sur toutes les pages (en le retirant de index et about)
+
+```twig
+ <body>
+        {% block nav  %} {% include 'home/menu.html.twig' %}{% endblock %}
+        {% block body %}{% endblock %}
+    </body>
+````
+
+### Mise en forme des formulaires et des pages avec `bootstrap`
+
+Nous allons utiliser  les assets qui se trouvent dans le dossier `assets`
+
+Documentation :
+
+Différence entre AssetMapper et Webpack Encore : 
+
+https://symfony.com/doc/current/frontend.html#webpack-encore
+
+ ### Utilisation d'`AssetMapper`
+
+Documentation : https://symfony.com/doc/current/frontend/asset_mapper.html
+
+On va importer bootstrap 
+
+```
+php bin/console importmap:require bootstrap
+[OK] 3 new items (bootstrap, @popperjs/core, bootstrap/dist/css/bootstrap.min.css) added to the importmap.php! 
+ ```
+
+La mise à jour a été effectué uniquement dans le fichier `importmap.php`
+
