@@ -265,4 +265,9 @@ class Article
 ```
 ### On veut adapter la table à mySQL
 
-La documentation 
+La documentation sur les colonnes (champs) dans `Doctrine`:
+
+https://www.doctrine-project.org/projects/doctrine-orm/en/3.2/reference/attributes-reference.html#attrref_column
+
+```php
+```
