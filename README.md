@@ -263,3 +263,6 @@ class Article
     }
 }
 ```
+### On veut adapter la table à mySQL
+
+La documentation 
